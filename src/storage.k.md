@@ -12,3 +12,14 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+```k
+syntax Int ::= "#OsmMom.owner" [function]
+rule #OsmMom.owner => 0
+
+syntax Int ::= "#OsmMom.authority" [function]
+rule #OsmMom.authority => 1
+
+syntax Int ::= "#OsmMom.osms" "[" Int "]" [function]
+rule #OsmMom.osms[A] => #hashedLocation("Solidity", 2, A)
+```
