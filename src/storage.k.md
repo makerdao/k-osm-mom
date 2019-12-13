@@ -23,3 +23,11 @@ rule #OsmMom.authority => 1
 syntax Int ::= "#OsmMom.osms" "[" Int "]" [function]
 rule #OsmMom.osms[A] => #hashedLocation("Solidity", 2, A)
 ```
+
+```k
+syntax Int ::= "#OSM.wards" "[" Int "]" [function]
+rule #OSM.wards[A] => #hashedLocation("Solidity", 0, A)
+
+syntax Int ::= "#OSM.stopped" [function]
+rule #OSM.stopped => 1
+```
