@@ -1,0 +1,3 @@
+[submodule "osm-mom"]
+	path = osm-mom
+	url = https://github.com/makerdao/osm-mom
