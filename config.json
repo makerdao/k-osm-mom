@@ -14,7 +14,7 @@
     },
     "OSM": {
       "src": "lib/osm/src/osm.sol"
-    }
+    },
     "SimpleAuthority": {
       "src": "src/OsmMom.t.sol"
     }
