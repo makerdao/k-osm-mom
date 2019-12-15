@@ -48,3 +48,9 @@ rule maxBytes4 &Int X => X
 rule X &Int maxBytes4 => X
   requires minUInt256 <=Int X andBool X <=Int maxBytes4
 ```
+
+# Extracting msg.sig of `stop` from calldata
+```k
+rule maxBytes4 &Int #asWord(99 : 196 : 240 : 49 : nthbyteof(X, 0, 32) : nthbyteof(X, 1, 32) : nthbyteof(X, 2, 32) : nthbyteof(X, 3, 32) : nthbyteof(X, 4, 32) : nthbyteof(X, 5, 32) : nthbyteof(X, 6, 32) : nthbyteof(X, 7, 32) : nthbyteof(X, 8, 32) : nthbyteof(X, 9, 32) : nthbyteof(X, 10, 32) : nthbyteof(X, 11, 32) : nthbyteof(X, 12, 32) : nthbyteof(X, 13, 32) : nthbyteof(X, 14, 32) : nthbyteof(X, 15, 32) : nthbyteof(X, 16, 32) : nthbyteof(X, 17, 32) : nthbyteof(X, 18, 32) : nthbyteof(X, 19, 32) : nthbyteof(X, 20, 32) : nthbyteof(X, 21, 32) : nthbyteof(X, 22, 32) : nthbyteof(X, 23, 32) : nthbyteof(X, 24, 32) : nthbyteof(X, 25, 32) : nthbyteof(X, 26, 32) : nthbyteof(X, 27, 32) : .WordStack) => 45126931774600552203247752449064824644304430000576705787687112960904123121664
+  requires X <=Int maxUInt256 andBool X >=Int 0
+```

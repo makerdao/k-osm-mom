@@ -144,7 +144,6 @@ for all
     Osm           : address OSM
     AllowedCaller : address
     May           : uint256
-    Stopped       : uint256
 
 storage
     owner     |-> Owner
@@ -156,12 +155,12 @@ storage Authority
     
 storage Osm
     wards[ACCT_ID] |-> May
-    stopped |-> Stopped => #if ((CALLER_ID == ACCT_ID) or (CALLER_ID == Owner) or ((Authoriy =/= 0) and (CALLER_ID == AllowedCaller))) #then 1 #else Stopped #fi
+    stopped        |-> _ => 1
 
 iff
     VCallValue == 0
     VCallDepth < 1024
-    (CALLER_ID == ACCT_ID) or (CALLER_ID == Owner) or ((Authoriy =/= 0) and (CALLER_ID == AllowedCaller))
+    (CALLER_ID == ACCT_ID) or (CALLER_ID == Owner) or (Authority =/= 0)
     May == 1
 
 if
@@ -194,12 +193,12 @@ storage Authority
     
 storage Osm
     wards[ACCT_ID] |-> May
-    stopped |-> Stopped => #if ((CALLER_ID == ACCT_ID) or (CALLER_ID == Owner) or ((Authoriy =/= 0) and (CALLER_ID == AllowedCaller))) #then 1 #else Stopped #fi
+    stopped |-> Stopped => #if ((CALLER_ID == ACCT_ID) or (CALLER_ID == Owner)) #then 1 #else Stopped #fi
 
 iff
     VCallValue == 0
     VCallDepth < 1024
-    (CALLER_ID == ACCT_ID) or (CALLER_ID == Owner) or ((Authoriy =/= 0) and (CALLER_ID == AllowedCaller))
+    (CALLER_ID == ACCT_ID) or (CALLER_ID == Owner)
     May == 1
 
 if
@@ -210,7 +209,7 @@ calls
     SimpleAuthority.canCall-false
 ```
 
-## OSM specifications (used as lemmas)
+## OSM behaviours (used as lemmas)
 
 ### Mutators
 
@@ -232,7 +231,7 @@ iff
     May == 1
 ```
 
-# SimpleAuthority behaviours (used as lemmas)
+## SimpleAuthority behaviours (used as lemmas)
 
 ### authorization logic
 
